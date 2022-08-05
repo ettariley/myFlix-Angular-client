@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <h2 style="margin-right: 10px;">myFlix</h2>
+  <button
+    mat-button
+    routerLink="/movies"
+    routerLinkActive="active"
+  >
+    Movies
+  </button>
+  <button
+    mat-button
+    routerLink="/profile"
+    routerLinkActive="active"
+  >
+    Profile
+  </button>
+  <button
+    mat-button
+    (click)="logoutUser()"
+    color="accent"
+  >
+    Logout
+  </button>
+</mat-toolbar>
