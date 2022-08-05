@@ -1,0 +1,62 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Edit Your User Info</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="edit-user-content">
+    <form>
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          required
+          [(ngModel)]="userData.Username"
+          placeholder="Username"
+          type="text"
+          name="Username"
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          required
+          [(ngModel)]="userData.Password"
+          placeholder="Password"
+          type="password"
+          name="Password"
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          required
+          [(ngModel)]="userData.Email"
+          placeholder="Email"
+          type="email"
+          name="Email"
+        >
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="edit-user-actions">
+    <button
+      mat-stroked-button
+      (click)="updateUser()"
+    >
+      Save Changes
+    </button>
+    <button
+      mat-stroked-button
+      (click)="closeDialog()"
+      color="warn"
+    >
+      Close
+    </button>
+  </mat-card-actions>
+  <mat-card-footer class="edit-user-footer">
+    <mat-card-subtitle>
+      You will be directed to log in again after you update your information.
+    </mat-card-subtitle>
+  </mat-card-footer>
+</mat-card>
