@@ -1,0 +1,30 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user-info {
+  margin: auto;
+}
+
+.user-favorites {
+  margin: 20px;
+}
+
+.profile-titles {
+  text-align: center;
+  color: #00BCD4;
+}
+
+.favorite-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.favorites {
+  margin: 10px;
+}
