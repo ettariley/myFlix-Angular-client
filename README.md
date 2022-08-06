@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
 
+See the completed demo site [here](https://myflix.ettahaselden.com/)
+
+The purpose of this project was to gain familiarity with Angular, TypeScript, & Angular Material, so I redesigned the React project Etta's Movie Database.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
