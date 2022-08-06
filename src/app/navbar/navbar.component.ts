@@ -14,6 +14,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Log out user
+   * Clears local storage of user and token
+   * Redirects to welcome screen
+   */
   logoutUser(): void {
     localStorage.clear();
     this.router.navigate(['welcome']);

@@ -15,6 +15,7 @@ import { MovieDetailsComponent } from '../movie-details/movie-details.component'
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   user: any = {};
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -27,6 +28,10 @@ export class MovieCardComponent implements OnInit {
     this.getUser();
   }
 
+  /**
+   * Get all movies from API
+   * @returns array of JSON movie objects
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -35,6 +40,10 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
+  /**
+   * Get user info from API
+   * @returns JSON user object
+   */
   getUser(): void {
     this.fetchApiData.getUserInfo().subscribe((resp: any) => {
       this.user = resp;
@@ -42,6 +51,10 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
+  /**
+   * Opens dialog to display information from GenreComponent
+   * @param name
+   */
   openGenreDialog(name: any): void {
     this.dialog.open(GenreComponent, {
       data: { name: name },
@@ -49,6 +62,10 @@ export class MovieCardComponent implements OnInit {
       });
   }
 
+  /**
+   * Opens dialog to display information from DirectorComponent
+   * @param name
+   */
   openDirectorDialog(name: any): void {
     this.dialog.open(DirectorComponent, {
       data: { name: name },
@@ -56,6 +73,11 @@ export class MovieCardComponent implements OnInit {
       });
   }
 
+  /**
+   * Opens dialog to display MovieDetailsComponent
+   * @param title 
+   * @param description 
+   */
   openMovieDetailsDialog(title: any, description: any): void {
     this.dialog.open(MovieDetailsComponent, {
       data: { 
@@ -66,6 +88,12 @@ export class MovieCardComponent implements OnInit {
       });
   }
 
+  /**
+   * Add movie to user's favorites list
+   * Invokes ngOnInit when complete to update favorite button UI and user data
+   * Displays success message in snackbar
+   * @param movieID 
+   */
   addMovieToFavorites(movieID: string): void {
     const token = localStorage.getItem('token');
     this.fetchApiData.addToFavorites(movieID).subscribe((response: any) => {
@@ -80,10 +108,22 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Checks whether or not movie is currently in favorites list
+   * Changes favorite icon accordingly in HTML
+   * @param id {string}
+   * @returns true or false
+   */
   isFavorite(id: string): boolean {
     return this.user.FavoriteMovies.includes(id);
   }
   
+  /**
+   * Remove movie from user's favorites list
+   * Invokes ngOnInit when complete to update favorite button UI and user data
+   * Displays success message in snackbar
+   * @param movieID 
+   */
   deleteMovieFromFavorites(movieID: string): void {
     const token = localStorage.getItem('token');
     this.fetchApiData.deleteFromFavorites(movieID).subscribe((response: any) => {

@@ -24,6 +24,12 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Log in user
+   * displays spinner while calling API for userLogin function
+   * sets username and token to local storage
+   * navigates to movies page
+   */
   loginUser(): void {
     this.isLoggingIn = true;
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {

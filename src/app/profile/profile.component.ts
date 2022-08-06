@@ -26,7 +26,10 @@ export class ProfileComponent implements OnInit {
     this.getUser();
   }
 
-
+  /**
+   * Get user information from API
+   * @returns user (set from JSON user object)
+   */
   getUser(): void {
     this.fetchApiData.getUserInfo().subscribe((resp: any) => {
       this.user = resp;
@@ -40,12 +43,21 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  /**
+   * Opens dialog to edit user information
+   * @param user {object}
+   */
   openEditUserDialog(user: any): void {
     this.dialog.open(EditUserComponent, {
       width: '400px'
       });
   }
 
+  /**
+   * Remove movie from user's favorites list
+   * @param movieID 
+   * @returns favorite movies list
+   */
   deleteMovieFromFavorites(movieID: string): void {
     const token = localStorage.getItem('token');
     this.fetchApiData.deleteFromFavorites(movieID).subscribe((response: any) => {
@@ -57,6 +69,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Delete current user
+   * Deletes user via deleteUser function
+   * Clears local storage of user and token information
+   * Redirects to welcome screen
+   */
   deleteUser(): void {
     if(confirm('Are you sure? This action cannot be undone.')) {
       this.fetchApiData.deleteUser().subscribe(() => {

@@ -11,6 +11,12 @@ export class DirectorComponent implements OnInit {
   directorName: string = '';
   directorBio: string = '';
 
+  /**
+   * Injects data from MovieCardComponent using MAT_DIALOG_DATA injection token
+   * To use with getDirector (from FetchApiDataService) for populating dialog data
+   * @param data 
+   * @param fetchApiData 
+   */
   constructor(@Inject(MAT_DIALOG_DATA) 
     public data: {name: string},
     public fetchApiData: FetchApiDataService,
@@ -20,6 +26,11 @@ export class DirectorComponent implements OnInit {
     this.getDirector(this.data.name);
   }
 
+  /**
+   * get director information from API
+   * set directorName and directorBio from API response
+   * @param name 
+   */
   getDirector(name: string): void {
     this.fetchApiData.getDirector(name).subscribe((resp: any) => {
       this.directorName = resp.Name;

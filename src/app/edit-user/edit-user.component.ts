@@ -29,6 +29,11 @@ export class EditUserComponent implements OnInit {
     this.getUser();
   }
 
+  /**
+   * get user information from API
+   * set user variable
+   * @returns JSON user object
+   */
   getUser(): void {
     this.fetchApiData.getUserInfo().subscribe((resp: any) => {
       this.user = resp;
@@ -36,6 +41,10 @@ export class EditUserComponent implements OnInit {
     })
   }
 
+  /**
+   * Use userData from form to update user information
+   * @returns JSON user object
+   */
   updateUser(): void {
     console.log(this.userData);
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
@@ -58,7 +67,7 @@ export class EditUserComponent implements OnInit {
       });
     });
   }
-
+  
   closeDialog() {
     this.dialogRef.close();
   }
